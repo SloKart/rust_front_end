@@ -1,30 +1,37 @@
 use yew::prelude::*;
 
-struct Model { 
-    value: i64
-
+struct Model {
+    value: i64,
 }
 
 #[function_component(App)]
 fn app() -> Html {
-    let state = use_state(|| Model {
-         value: 0 
-        });
+    let state = use_state(|| Model { value: 0 });
 
-    let onclick = {
+    let onclick_increment = {
         let state = state.clone();
 
         Callback::from(move |_| {
             state.set(Model {
-            value: state.value + 1
+                value: state.value + 1,
             })
         })
     };
 
-    html! { 
+    let onclick_decrement = {
+        let state = state.clone();
+
+        Callback::from(move |_| {
+            state.set(Model {
+                value: state.value - 1,
+            })
+        })
+    };
+    html! {
         <div>
-            <button {onclick}>{ "+1" }</button>
-            
+            <button onclick={onclick_increment}>{ "+1" }</button>
+            <button onclick={onclick_decrement}>{ "-1" }</button>
+
             <p>{ state.value }</p>
         </div>
     }

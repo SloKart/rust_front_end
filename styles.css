@@ -4,6 +4,12 @@ body {
 }
 
 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 20vw;
   background-color: black;
   color: white;
   padding: 10px;
